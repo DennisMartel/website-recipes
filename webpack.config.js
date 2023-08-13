@@ -6,17 +6,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getStylesLoaders = (useCssModules) => {
   return [
     { loader: MiniCssExtractPlugin.loader },
-    !useCssModules ?
-      {
-        loader: 'css-loader'
-      } : {
-        loader: 'css-loader',
-        options: {
-          modules: {
-            localIdentName: '[name]-ui__[local]'
-          }
+    !useCssModules ? {
+      loader: 'css-loader'
+    } : null,
+    !useCssModules ? {
+      loader: 'postcss-loader'
+    } : null,
+    useCssModules ? {
+      loader: 'css-loader',
+      options: {
+        modules: {
+          localIdentName: '[name]-ui__[local]'
         }
-      },
+      }
+    } : null,
     'sass-loader'
   ]
 }
@@ -51,9 +54,8 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /node_mudules/,
-        include: [path.resolve(__dirname, 'src')],
-        // use: getStylesLoaders(false)
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        include: [path.resolve(__dirname, 'src/scss')],
+        use: getStylesLoaders(false)
       },
       {
         type: 'asset',

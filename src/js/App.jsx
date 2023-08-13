@@ -1,5 +1,4 @@
-import './styles.css';
-
+import '../scss/base/styles.css';
 const App = () => {
   return (
     <div className='text-center text-red-600'>Proyecto inicial</div>
