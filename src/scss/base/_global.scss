@@ -1,0 +1,62 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: $bg-body;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.noScroll {
+    overflow: hidden;
+}
+
+.myContainer {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .myContainer {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .myContainer {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .myContainer {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .myContainer {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .myContainer {
+        max-width: 1400px;
+    }
+}
