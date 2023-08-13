@@ -49,9 +49,11 @@ module.exports = {
         use: getStylesLoaders(true)
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         exclude: /node_mudules/,
-        use: getStylesLoaders(false)
+        include: [path.resolve(__dirname, 'src')],
+        // use: getStylesLoaders(false)
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
         type: 'asset',
