@@ -1,8 +1,8 @@
+import Router from './router/Router';
 import '../scss/base/styles.css';
+
 const App = () => {
-  return (
-    <div className='text-center text-red-600'>Proyecto inicial</div>
-  )
+  return <Router />
 }
 
 export default App
