@@ -1,0 +1,53 @@
+{
+  "difficulties": [
+    {
+      "label": "Muy baja"
+    },
+    {
+      "label": "Baja"
+    },
+    {
+      "label": "Media"
+    },
+    {
+      "label": "Alta"
+    }
+  ],
+  "categories": [
+    {
+      "label": "Postres"
+    },
+    {
+      "label": "Pasta"
+    },
+    {
+      "label": "Verduras"
+    },
+    {
+      "label": "Huevos y lacteos"
+    },
+    {
+      "label": "Ensaladas"
+    },
+    {
+      "label": "Carne"
+    },
+    {
+      "label": "Pescado"
+    },
+    {
+      "label": "Salsas"
+    }
+  ],
+  "costs": [
+    {
+      "label": "Barato"
+    },
+    {
+      "label": "Medio"
+    },
+    {
+      "label": "Caro"
+    }
+  ]
+}
