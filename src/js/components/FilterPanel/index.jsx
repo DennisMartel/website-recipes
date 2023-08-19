@@ -37,9 +37,7 @@ const FilterPanel = ({ handlerFilter, handlerClose, open }) => {
       {open && <div className='fixed top-0 left-0 h-full w-full bg-black bg-opacity-25 z-50' />}
       <div onClick={closeFilterPanel} ref={filterPanelRef} className={classNames(
         styles.filterPanel,
-        'fixed lg:sticky right-0 top-0 lg:top-24 px-4 h-full lg:h-auto bg-white w-4/5 sm:w-3/5 md:w-1/2 lg:w-full z-50 lg:z-0 transition-transform duration-300 ease-in-out lg:translate-x-0 overflow-y-auto',
-        styles.test,
-        { ['translate-x-full']: !open }
+        { [styles.openFilterPanel]: !open }
       )}>
         <DifficultyFilterPanel
           options={dbFilterPanel.difficulties}

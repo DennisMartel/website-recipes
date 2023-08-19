@@ -7,16 +7,22 @@ const getStylesLoaders = (useCssModules) => {
   return [
     { loader: MiniCssExtractPlugin.loader },
     !useCssModules ? {
-      loader: 'css-loader'
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1
+      }
     } : {
       loader: 'css-loader',
       options: {
         modules: {
-          localIdentName: 'recipes__[name]UI--[local]'
-        }
+          localIdentName: 'recipes__[name]--[local]'
+        },
+        importLoaders: 1
       }
     },
-    'sass-loader'
+    {
+      loader: 'sass-loader'
+    }
   ];
 }
 
@@ -45,7 +51,12 @@ module.exports = {
         test: /\.(scss|sass)$/,
         include: [path.resolve(__dirname, 'src/js')],
         exclude: /node_mudules/,
-        use: getStylesLoaders(true)
+        use: [
+          ...getStylesLoaders(true),
+          {
+            loader: 'postcss-loader'
+          }
+        ]
       },
       {
         test: /\.css$/i,
