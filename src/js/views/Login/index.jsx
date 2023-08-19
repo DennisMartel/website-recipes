@@ -2,15 +2,16 @@ import Layout from '../../components/Layout';
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
 import { Link } from 'react-router-dom';
+import styles from './Login.scss';
 
 const Login = () => {
   return (
     <Layout>
-      <div className="h-full w-full py-16">
-        <div className="flex justify-center">
-          <div className="bg-white shadow-lg rounded-md lg:w-2/5 md:w-1/2 w-11/12 p-8">
-            <p tabIndex={0} className='text-2xl font-extrabold leading-6 text-gray-800'>Inicia sesión en tu cuenta</p>
-            <p className='block text-md mt-2 text-gray-800'>¿No tienes una cuenta? <Link to='/register' className='hover:text-gray-500 active:text-rose-600'>Crear cuenta</Link></p>
+      <div className={styles.wrapper}>
+        <div className={styles.contentWrapper}>
+          <div className={styles.loginWrapper}>
+            <p tabIndex={0} className={styles.title}>Inicia sesión en tu cuenta</p>
+            <p className={styles.subtitle}>¿No tienes una cuenta? <Link to='/register' className={styles.subtitleLink}>Crear cuenta</Link></p>
             <div className="py-6">
               <div className="mb-4">
                 <Input
@@ -31,15 +32,15 @@ const Login = () => {
                   type='password'
                   tabIndex={1}
                 />
-                <Link to='/reset-password' className='block text-sm text-right my-3 hover:text-gray-500 active:text-rose-600'>¿Olvidaste tu contraseña?</Link>
+                <Link to='/reset-password' className={styles.resetPasswordLink}>¿Olvidaste tu contraseña?</Link>
               </div>
               <Button title="Iniciar sesion" />
-              <div className="w-full flex items-center justify-between my-8">
-                <div className="w-full border bg-gray-400" />
-                <p className="text-base font-medium leading-4 text-gray-600 w-full text-center">o también</p>
-                <div className="w-full border bg-gray-400" />
+              <div className={styles.orBox}>
+                <div className={styles.orLine} />
+                <p className={styles.orText}>o también</p>
+                <div className={styles.orLine} />
               </div>
-              <button className='w-full border border-gray-500 rounded-md h-10 font-semibold'>
+              <button className={styles.googleBtn}>
                 Acceder con Google
               </button>
             </div>
