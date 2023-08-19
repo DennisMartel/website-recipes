@@ -8,20 +8,16 @@ const getStylesLoaders = (useCssModules) => {
     { loader: MiniCssExtractPlugin.loader },
     !useCssModules ? {
       loader: 'css-loader'
-    } : null,
-    !useCssModules ? {
-      loader: 'postcss-loader'
-    } : null,
-    useCssModules ? {
+    } : {
       loader: 'css-loader',
       options: {
         modules: {
-          localIdentName: '[name]-ui__[local]'
+          localIdentName: 'recipes__[name]UI--[local]'
         }
       }
-    } : null,
+    },
     'sass-loader'
-  ]
+  ];
 }
 
 /** @type { import('webpack').Configuration } */
@@ -55,7 +51,12 @@ module.exports = {
         test: /\.css$/i,
         exclude: /node_mudules/,
         include: [path.resolve(__dirname, 'src/scss')],
-        use: getStylesLoaders(false)
+        use: [
+          ...getStylesLoaders(false),
+          {
+            loader: 'postcss-loader'
+          }
+        ]
       },
       {
         type: 'asset',

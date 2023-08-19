@@ -5,7 +5,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 left-0 z-50">
+    <header className="sticky top-0 left-0 z-40">
       <nav role="navigation" className="bg-white shadow-md xl:block hidden">
         <div className="mx-auto max-w-7xl container px-6 py-2 xl:py-0">
           <div className="flex items-center justify-between">
@@ -124,7 +124,7 @@ const Header = () => {
         </div>
       </nav>
       <nav className="bg-white shadow-md">
-        <div className="py-4 px-6 w-full flex xl:hidden justify-between items-center bg-white fixed top-0 z-40">
+        <div className="py-4 px-6 w-full flex xl:hidden justify-between items-center bg-white sticky top-0 z-50">
           <div aria-label="logo" role="img" tabIndex="0">
             <div className="flex items-center rounded-full border-2 border-rose-400 p-1">
               <img src={require('../../../assets/images/chef-hat.png')} alt="Logo" width={50} />
