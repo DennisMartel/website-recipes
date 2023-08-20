@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   return (
     <Fragment>
       <Header />
-      <main className='max-w-7xl mx-auto'>
+      <main className='myContainer'>
         {children}
       </main>
       <Footer />

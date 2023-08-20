@@ -4,7 +4,7 @@ import Checkbox from '../../Form/Checkbox';
 
 const DifficultyFilterPanel = ({ options, onChange, onClick, isOpened }) => {
   return (
-    <div className='border-b border-gray-200 py-4'>
+    <div className='border-t border-gray-200 py-4'>
       <h3 className='-my-3 flow-root' onClick={onClick}>
         <button type="button" className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
           <span className="font-semibold text-lg text-black">Dificultad</span>
