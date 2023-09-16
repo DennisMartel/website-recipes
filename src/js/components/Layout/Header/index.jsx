@@ -12,6 +12,7 @@ const Header = ({ autoCompleteData }) => {
         <div className="myContainer px-6 py-2 xl:py-0">
           <div className="flex items-center justify-between">
             <Logo />
+
             {/* <div className="flex">
               <div className="hidden xl:flex md:mr-6 xl:mr-16">
                 <Link to='/' className="px-5 py-7 text-lg leading-5 text-black font-semibold hover:bg-gray-100 transition duration-150 ease-in-out">
@@ -69,6 +70,7 @@ const Header = ({ autoCompleteData }) => {
                 </div>
               </div>
             </div> */}
+            
             <AutoComplete
               suggestions={autoCompleteData}
             />
