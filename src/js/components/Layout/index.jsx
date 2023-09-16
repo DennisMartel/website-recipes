@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, autoCompleteData }) => {
   return (
     <Fragment>
-      <Header />
+      <Header autoCompleteData={autoCompleteData} />
       <main className='myContainer'>
         {children}
       </main>
@@ -17,7 +17,8 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  autoCompleteData: PropTypes.array
 }
 
 export default Layout

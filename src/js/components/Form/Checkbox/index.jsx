@@ -5,6 +5,7 @@ const Checkbox = ({
   id,
   name,
   value,
+  checked,
   cssClass,
   titleClass,
   tabIndex,
@@ -27,6 +28,7 @@ const Checkbox = ({
         id={id}
         name={name}
         value={value}
+        defaultChecked={checked}
         type="checkbox"
         className={checkboxClasses}
         onChange={onChange}
@@ -41,6 +43,7 @@ Checkbox.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
+  checked: PropTypes.bool,
   cssClass: PropTypes.string,
   titleClass: PropTypes.string,
   tabIndex: PropTypes.any,

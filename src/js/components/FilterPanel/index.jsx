@@ -8,7 +8,7 @@ import CostFilterPanel from "./CostFilterPanel";
 import DifficultyFilterPanel from "./DifficultyFilterPanel";
 import styles from './FilterPanel.scss';
 
-const FilterPanel = ({ handlerFilter, handlerClose, open }) => {
+const FilterPanel = ({ handlerFilter, handlerClose, open, categoriesData }) => {
   const [isOpenDifficultyPanelFilter, setIsOpenDifficultyPanelFilter] = useState(true);
   const [isOpenCategoryPanelFilter, setIsOpenCategoryPanelFilter] = useState(true);
   const [isOpenCostPanelFilter, setIsOpenCostPanelFilter] = useState(true);
@@ -28,7 +28,6 @@ const FilterPanel = ({ handlerFilter, handlerClose, open }) => {
     <aside>
       {open && <div className={styles.overlayFilterPanel} onClick={handlerClose} />}
       <div ref={filterPanelRef} className={classNames(
-        // styles.filterPanel,
         'fixed lg:sticky right-0 top-0 lg:top-24 px-4 h-full lg:h-auto bg-white w-4/5 sm:w-3/5 md:w-1/2 lg:w-full z-50 lg:z-0 transition-transform duration-300 ease-in-out lg:translate-x-0 overflow-y-auto',
         { ['translate-x-full']: !open }
       )}>
@@ -52,7 +51,7 @@ const FilterPanel = ({ handlerFilter, handlerClose, open }) => {
           onChange={(e) => handlerFilter(e, filterTypes.difficulties)}
         />
         <CategoryFilterPanel
-          options={dbFilterPanel.categories}
+          options={categoriesData}
           isOpened={isOpenCategoryPanelFilter}
           onClick={() => setIsOpenCategoryPanelFilter(!isOpenCategoryPanelFilter)}
           onChange={(e) => handlerFilter(e, filterTypes.categories)}
@@ -70,7 +69,9 @@ const FilterPanel = ({ handlerFilter, handlerClose, open }) => {
 
 FilterPanel.propTypes = {
   handlerFilter: PropTypes.func,
-  handlerClose: PropTypes.func
+  handlerClose: PropTypes.func,
+  open: PropTypes.bool,
+  categoriesData: PropTypes.array,
 }
 
 export default FilterPanel

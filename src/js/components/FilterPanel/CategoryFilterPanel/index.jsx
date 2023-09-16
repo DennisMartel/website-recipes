@@ -1,8 +1,37 @@
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AnimateHeight from "react-animate-height"
 import Checkbox from '../../Form/Checkbox';
 
 const CategoryFilterPanel = ({ options, onChange, onClick, isOpened }) => {
+  const [search, setSearch] = useSearchParams();
+
+  const onHandlerChange = useCallback(e => {
+    onChange(e);
+    let cats = search.get("cats")?.split(",") ?? [];
+    const isChecked = e.target.checked;
+    const value = e.target.value;
+
+    if (isChecked) {
+      cats.push(value);
+    } else {
+      cats = cats.filter(_value => _value !== value);
+    }
+
+    if (cats.length === 0) {
+      search.delete("cats");
+    } else {
+      search.set("cats", cats.join(","));
+    }
+
+    if (search.get("page")) {
+      search.delete("page");
+    }
+
+    setSearch(search);
+  }, [search]);
+
   return (
     <div className='border-t border-gray-200 py-4'>
       <h3 className='-my-3 flow-root' onClick={onClick}>
@@ -18,15 +47,16 @@ const CategoryFilterPanel = ({ options, onChange, onClick, isOpened }) => {
       <AnimateHeight height={isOpened ? 'auto' : 0} duration={500}>
         <div className="pt-6" id="filter-section-0">
           <div className="space-y-4">
-            {options && Array.isArray(options) && options.map(({ label }, key) => (
+            {options && Array.isArray(options) && options.map(({ title }, key) => (
               <Checkbox
                 id={`filter-category-${key + 1}`}
-                name="difficulty[]"
+                name="category"
                 key={key}
                 tabIndex={1}
-                title={label}
-                value={label}
-                onChange={onChange}
+                title={title}
+                value={title}
+                onChange={onHandlerChange}
+                checked={search.get("cats")?.split(",").includes(title)}
               />
             ))}
           </div>

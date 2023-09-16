@@ -1,8 +1,32 @@
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Checkbox from '../../Form/Checkbox';
 import AnimateHeight from 'react-animate-height';
 
 const CostFilterPanel = ({ options, onChange, onClick, isOpened }) => {
+  const [search, setSearch] = useSearchParams();
+
+  const onHandlerChange = useCallback(e => {
+    onChange(e);
+    let costs = search.get("costs")?.split(",") ?? [];
+    const isChecked = e.target.checked;
+    const value = e.target.value;
+
+    if (isChecked) {
+      costs.push(value);
+    } else {
+      costs = costs.filter(_value => _value !== value);
+    }
+
+    if (costs.length === 0) {
+      search.delete("costs");
+    } else {
+      search.set("costs", costs.join(","));
+    }
+
+    setSearch(search);
+  }, [search]);
   return (
     <div className='border-t border-gray-200 py-4'>
       <h3 className='-my-3 flow-root' onClick={onClick}>
@@ -21,12 +45,12 @@ const CostFilterPanel = ({ options, onChange, onClick, isOpened }) => {
             {options && Array.isArray(options) && options.map(({ label }, key) => (
               <Checkbox
                 id={`filter-cost-${key + 1}`}
-                name="cost[]"
+                name="costs[]"
                 key={key}
                 tabIndex={1}
                 title={label}
                 value={label}
-                onChange={onChange}
+                onChange={onHandlerChange}
               />
             ))}
           </div>

@@ -1,8 +1,33 @@
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AnimateHeight from "react-animate-height"
 import Checkbox from '../../Form/Checkbox';
 
 const DifficultyFilterPanel = ({ options, onChange, onClick, isOpened }) => {
+  const [search, setSearch] = useSearchParams();
+
+  const onHandlerChange = useCallback(e => {
+    onChange(e);
+    let levels = search.get("levels")?.split(",") ?? [];
+    const isChecked = e.target.checked;
+    const value = e.target.value;
+
+    if (isChecked) {
+      levels.push(value);
+    } else {
+      levels = levels.filter(_value => _value !== value);
+    }
+
+    if (levels.length === 0) {
+      search.delete("levels");
+    } else {
+      search.set("levels", levels.join(","));
+    }
+
+    setSearch(search);
+  }, [search]);
+
   return (
     <div className='border-t border-gray-200 py-4'>
       <h3 className='-my-3 flow-root' onClick={onClick}>
@@ -26,7 +51,8 @@ const DifficultyFilterPanel = ({ options, onChange, onClick, isOpened }) => {
                 tabIndex={1}
                 title={label}
                 value={label}
-                onChange={onChange}
+                onChange={onHandlerChange}
+                checked={search.get("levels")?.split(",").includes(label)}
               />
             ))}
           </div>
