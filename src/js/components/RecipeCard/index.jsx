@@ -4,7 +4,7 @@ const RecipeCard = ({ data }) => {
   return data && (
     <article className='bg-white shadow-md rounded-lg flex flex-col overflow-hidden'>
       <figure>
-        <img src={`http://tureceta.test/storage/${data.image_link}`} alt="" className='h-40 w-full object-cover object-center' />
+        <img src={`https://tureceta-svc.solutionsmartel.com/storage/${data.image_link}`} alt="" className='h-40 w-full object-cover object-center' />
       </figure>
       <div className='px-4 py-3 flex flex-col flex-1'>
         <div className="self-end float-right -mt-10 mb-1">

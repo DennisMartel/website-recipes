@@ -1,3 +1,3 @@
 module.exports = {
-    API_URL: 'http://tureceta.test/api',
+    API_URL: 'https://tureceta-svc.solutionsmartel.com/api',
 }
